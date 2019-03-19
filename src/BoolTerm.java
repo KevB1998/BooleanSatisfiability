@@ -13,6 +13,10 @@ public class BoolTerm {
 
     }
 
+    public void is(BoolTerm boolTerm) {
+        this.products = boolTerm.getProducts();
+    }
+
     public ArrayList<BoolVar> getProducts() {
         return this.products;
     }
@@ -24,7 +28,6 @@ public class BoolTerm {
                 found = true;
             }
             else if (this.products.get(i).isInverse(product)) {
-                System.out.println("hi");
                 return false;
             }
         }

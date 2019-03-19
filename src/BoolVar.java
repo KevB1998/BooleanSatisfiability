@@ -12,6 +12,11 @@ public class BoolVar {
         this.inverse = inverse;
     }
 
+    public void is(BoolVar boolVar) {
+        this.name = boolVar.getName();
+        this.inverse = boolVar.getInverse();
+    }
+
     public String getName() {
         return this.name;
     }
@@ -36,5 +41,9 @@ public class BoolVar {
     public boolean isInverse(BoolVar var) {
         boolean inv = (this.name == var.getName()) && (this.inverse != var.getInverse());
         return inv;
+    }
+
+    public String details() {
+        return "NAME: " + this.name + "\tINVERSE: " + this.inverse;
     }
 }

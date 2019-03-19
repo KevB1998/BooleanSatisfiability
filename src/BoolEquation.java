@@ -17,6 +17,10 @@ public class BoolEquation {
         this.terms.add(new BoolTerm(var));
     }
 
+    public void is(BoolEquation boolEquation) {
+        this.terms = boolEquation.getTerms();
+    }
+
     public ArrayList<BoolTerm> getTerms() {
         return this.terms;
     }

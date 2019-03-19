@@ -9,10 +9,10 @@ public class Main {
         BoolTerm boolTerm = Bool.stringToTerm(termString);
         System.out.println(boolTerm);
 
-        //BoolEquation equation = stringToEquation(equationString);
-        //System.out.println(equation);
+        /*BoolEquation equation = stringToEquation(equationString);
+        System.out.println(equation);
 
-        /* BoolEquation equation1 = new BoolEquation();
+        BoolEquation equation1 = new BoolEquation();
         BoolEquation equation2 = new BoolEquation();
 
         BoolVar a = new BoolVar("a");
@@ -50,7 +50,21 @@ public class Main {
 
         BoolEquation product = Bool.multiply(equation1, equation2);
 
-        System.out.println("E1*E2: " + product);*/
+        System.out.println("E1*E2: " + product);
+
+        BoolEquation boolEquation1 = Bool.add(Bool.add(a, b), c);
+        BoolEquation boolEquation2 = Bool.add(Bool.add(aNot, bNot), c);
+        BoolEquation boolEquation3 = Bool.add(Bool.add(a, bNot), cNot);
+        BoolEquation boolEquation4 = Bool.add(Bool.add(aNot, b), cNot);
+
+        BoolEquation answerEquation = Bool.multiply(Bool.multiply(boolEquation1, boolEquation2), Bool.multiply(boolEquation3, boolEquation4));
+
+
+        System.out.println("Equation1: " + boolEquation1);
+        System.out.println("Equation2: " + boolEquation2);
+        System.out.println("Equation3: " + boolEquation3);
+        System.out.println("Equation4: " + boolEquation4);
+        System.out.println("Product: " + answerEquation);*/
     }
 
 

@@ -65,4 +65,22 @@ public class BoolTerm {
         }
         return true;
     }
+
+    public boolean contains(BoolVar boolVar) {
+        for(int i = 0; i < this.products.size(); i++) {
+            if(this.products.get(i).equals(boolVar)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean contains(BoolTerm boolTerm) {
+        for(int i = 0; i < boolTerm.getProducts().size(); i++) {
+            if(! contains(boolTerm.getProducts().get(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

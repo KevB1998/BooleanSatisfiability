@@ -34,12 +34,12 @@ public class BoolVar {
     }
 
     public boolean equals(BoolVar var) {
-        boolean equal = (this.name == var.getName()) && (this.inverse == var.getInverse());
+        boolean equal = (this.name.equals(var.getName())) && (this.inverse == var.getInverse());
         return equal;
     }
 
     public boolean isInverse(BoolVar var) {
-        boolean inv = (this.name == var.getName()) && (this.inverse != var.getInverse());
+        boolean inv = (this.name.equals(var.getName())) && (this.inverse != var.getInverse());
         return inv;
     }
 

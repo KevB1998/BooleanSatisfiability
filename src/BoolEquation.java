@@ -25,16 +25,17 @@ public class BoolEquation {
         return this.terms;
     }
 
-    public void addTerm(BoolTerm term) {
-        boolean found = false;
+    public void addTerm(BoolTerm boolTerm) {
         for(int i = 0; i < this.terms.size(); i++) {
-            if(this.terms.get(i).equals(term)) {
-                found = true;
+            if(this.terms.get(i).contains(boolTerm)) {
+                this.terms.remove(i);
+                i--;
+            }
+            else if(boolTerm.contains(this.terms.get(i))) {
+                return;
             }
         }
-        if(!found) {
-            this.terms.add(term);
-        }
+        this.terms.add(boolTerm);
     }
 
     public String toString() {

@@ -1,5 +1,8 @@
+import java.util.AbstractQueue;
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.Stack;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 @SuppressWarnings("Duplicates")
 public class Bool {
@@ -226,7 +229,7 @@ public class Bool {
         BoolEquation boolEquation = new BoolEquation();
 
         for(int i = 0; i < boolTerm.getProducts().size(); i++) {
-            boolEquation = Bool.add(boolEquation, Bool.invert(boolTerm.getProducts().get(i)));
+            boolEquation = add(boolEquation, invert(boolTerm.getProducts().get(i)));
         }
 
         return boolEquation;
@@ -237,9 +240,9 @@ public class Bool {
 
         for(int i = 0; i < boolEquation.getTerms().size(); i++) {
             if(i == 0) {
-                outputEquation = Bool.invert(boolEquation.getTerms().get(0));
+                outputEquation = invert(boolEquation.getTerms().get(0));
             } else {
-                outputEquation = Bool.multiply(outputEquation, Bool.invert(boolEquation.getTerms().get(i)));
+                outputEquation = multiply(outputEquation, invert(boolEquation.getTerms().get(i)));
             }
         }
 
@@ -295,12 +298,98 @@ public class Bool {
         }
     }
 
-    private static BoolEquation stringToSOP(String inputString) {
+    public static BoolEquation stringToSOP(String inputString) {
+        if(! inputString.contains("(")) {
+            return stringToEquation(inputString);
+        }
         BoolEquation boolEquation = new BoolEquation();
 
-        //I think I want to read through the string first and find the grouping symbols that go together and give them a priority based on depth
-        //i.e. (askjd(shjd)) -- Some object with open=0, close=12, depth = 0 and another with open=6, close=11, depth=1
-        //evaluate with highest depth first then go back from there
+        while(inputString.length() > 0) {
+            if ((inputString.contains("(") && inputString.contains("+")) && (inputString.indexOf('+') < inputString.indexOf('('))) {
+                boolEquation = add(boolEquation, stringToTerm(inputString.substring(0, inputString.indexOf('+'))));
+                inputString = inputString.substring(inputString.indexOf('+') + 1);
+            } else if ((inputString.contains("(") && inputString.contains("+")) && (inputString.indexOf('+') > inputString.indexOf('('))) {
+                int opens = 1;
+                int i;
+                for(i = 1; opens > 0; i++) {
+                    if(inputString.charAt(i) == '(') {
+                        opens++;
+                    } else if(inputString.charAt(i) == ')') {
+                        opens--;
+                    }
+                }
+                String tempString = inputString.substring(0, i+1);
+                BoolEquation tempEquation = new BoolEquation();
+                while(tempString.length() > 0) {
+                    if((tempString.contains("(") && tempString.contains("+")) && (tempString.indexOf('*') < tempString.indexOf('('))) {
+                        tempEquation = multiply(tempEquation, stringToVar(tempString.substring(0, tempString.indexOf('*'))));
+                        tempString = tempString.substring(tempString.indexOf('*') + 1);
+                    } else if((tempString.contains("(") && tempString.contains("+")) && (tempString.indexOf('*') < tempString.indexOf('('))) {
+                        opens = 1;
+                        for(i = 0; opens > 0; i++) {
+                            if(tempString.charAt(i) == '(') {
+                                opens++;
+                            } else if(tempString.charAt(i) == ')') {
+                                opens--;
+                            }
+                        }
+                        if(tempString.length() == i+1 || tempString.charAt(i+1) != '\'') {
+                            tempEquation = multiply(tempEquation, stringToSOP(tempString.substring(1,i)));
+                            tempString = tempString.substring(i+1);
+                        } else {
+                            tempEquation = multiply(tempEquation, invert(stringToSOP(tempString.substring(1, i))));
+                            tempString = tempString.substring(i+2);
+                        }
+                    } else if(tempString.contains("*")) {
+                        tempEquation = multiply(tempEquation, stringToTerm(tempString));
+                        break;
+                    } else if(tempString.contains("(")) {
+                        opens = 1;
+                        for(i = 1; opens > 0; i++) {
+                            if(tempString.charAt(i) == '(') {
+                                opens++;
+                            } else if(tempString.charAt(i) == ')') {
+                                opens--;
+                            }
+                        }
+                        if(tempString.length() == i+1 || tempString.charAt(i+1) != '\'') {
+                            tempEquation = multiply(tempEquation, stringToSOP(tempString.substring(1,i)));
+                        } else {
+                            tempEquation = multiply(tempEquation, invert(stringToSOP(tempString.substring(1, i))));
+                        }
+                        break;
+                    } else {
+                        tempEquation = multiply(tempEquation, stringToVar(tempString));
+                        break;
+                    }
+                }
+                boolEquation = add(boolEquation, tempEquation);
+                inputString = inputString.substring(inputString.indexOf('+') + 1);
+            } else if (inputString.contains("+")) {
+                boolEquation = add(boolEquation, stringToEquation(inputString));
+                break;
+            } else if (inputString.contains("(")) {
+                int opens = 1;
+                int i;
+                for(i = 0; opens > 0; i++) {
+                    if(inputString.charAt(i) == '(') {
+                        opens++;
+                    } else if(inputString.charAt(i) == ')') {
+                        opens--;
+                    }
+                }
+                if(inputString.length() == i+1 || inputString.charAt(i+1) != '\'') {
+                    boolEquation = add(boolEquation, stringToSOP(inputString.substring(1,i)));
+                    break;
+                } else {
+                    boolEquation = add(boolEquation, invert(stringToSOP(inputString.substring(1, i))));
+                    break;
+                }
+            } else {
+                boolEquation = add(boolEquation, stringToTerm(inputString));
+                break;
+            }
+        }
 
         return boolEquation;
     }

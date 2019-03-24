@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61dbec05-bac1-4e9d-a8b4-a84891e3c619" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/Bool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/Bool.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -47,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BoolEquation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+            <state relative-caret-position="336">
+              <caret line="28" column="52" lean-forward="true" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
               <folding>
                 <element signature="e#465#466#0" expanded="true" />
                 <element signature="e#505#506#0" expanded="true" />
@@ -60,16 +58,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="427" column="9" selection-start-line="427" selection-start-column="9" selection-end-line="427" selection-end-column="9" />
+            <state relative-caret-position="184">
+              <caret line="414" column="54" selection-start-line="414" selection-start-column="54" selection-end-line="414" selection-end-column="54" />
               <folding>
                 <element signature="e#450#451#0" expanded="true" />
                 <element signature="e#501#502#0" expanded="true" />
-                <element signature="e#5742#5743#0" expanded="true" />
-                <element signature="e#6470#6471#0" expanded="true" />
-                <element signature="e#7958#7959#0" expanded="true" />
-                <element signature="e#7287#7288#0" expanded="true" />
-                <element signature="e#7363#7364#0" expanded="true" />
+                <element signature="e#6718#6719#0" expanded="true" />
+                <element signature="e#7582#7583#0" expanded="true" />
+                <element signature="e#9342#9343#0" expanded="true" />
                 <element signature="e#13061#13062#0" expanded="true" />
                 <element signature="e#13117#13118#0" expanded="true" />
               </folding>
@@ -80,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+            <state relative-caret-position="75">
+              <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -122,7 +118,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="1" />
     <option name="y" value="23" />
     <option name="width" value="1680" />
@@ -157,7 +153,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553386357241" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553390355225" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -201,15 +197,15 @@
       <option name="presentableId" value="Default" />
       <updated>1552363068050</updated>
       <workItem from="1552363069266" duration="23523000" />
-      <workItem from="1552791596899" duration="36439000" />
+      <workItem from="1552791596899" duration="38077000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59962000" />
+    <option name="totallyTimeSpent" value="61600000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="23" width="1680" height="955" extended-state="1" />
+    <frame x="1" y="23" width="1680" height="955" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25274727" />
@@ -221,7 +217,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6987254" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22943221" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -280,8 +276,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BoolEquation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+        <state relative-caret-position="336">
+          <caret line="28" column="52" lean-forward="true" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
           <folding>
             <element signature="e#465#466#0" expanded="true" />
             <element signature="e#505#506#0" expanded="true" />
@@ -291,16 +287,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Bool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="427" column="9" selection-start-line="427" selection-start-column="9" selection-end-line="427" selection-end-column="9" />
+        <state relative-caret-position="184">
+          <caret line="414" column="54" selection-start-line="414" selection-start-column="54" selection-end-line="414" selection-end-column="54" />
           <folding>
             <element signature="e#450#451#0" expanded="true" />
             <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#5742#5743#0" expanded="true" />
-            <element signature="e#6470#6471#0" expanded="true" />
-            <element signature="e#7958#7959#0" expanded="true" />
-            <element signature="e#7287#7288#0" expanded="true" />
-            <element signature="e#7363#7364#0" expanded="true" />
+            <element signature="e#6718#6719#0" expanded="true" />
+            <element signature="e#7582#7583#0" expanded="true" />
+            <element signature="e#9342#9343#0" expanded="true" />
             <element signature="e#13061#13062#0" expanded="true" />
             <element signature="e#13117#13118#0" expanded="true" />
           </folding>
@@ -309,8 +303,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+        <state relative-caret-position="75">
+          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
         </state>
       </provider>
     </entry>

@@ -3,11 +3,11 @@ import java.util.ArrayList;
 @SuppressWarnings("Duplicates")
 public class Bool {
     private static BoolTerm multiply(BoolVar product1, BoolVar product2){
-        if(product1 == null && product2 == null) {
+        if((product1 == null || product1.toString().equals("")) && (product2 == null || product2.toString().equals(""))) {
             return null;
-        } else if(product1 == null) {
+        } else if(product1 == null || product1.toString().equals("")) {
             return new BoolTerm(product2);
-        } else if(product2 == null) {
+        } else if(product2 == null || product2.toString().equals("")) {
             return new BoolTerm(product1);
         }
         BoolTerm boolTerm = new BoolTerm();
@@ -25,11 +25,11 @@ public class Bool {
     }
 
     private static BoolTerm multiply(BoolTerm product1, BoolVar product2) {
-        if(product1 == null && product2 == null) {
+        if((product1 == null || product1.toString().equals("")) && (product2 == null || product2.toString().equals(""))) {
             return null;
-        } else if(product1 == null) {
+        } else if(product1 == null || product1.toString().equals("")) {
             return new BoolTerm(product2);
-        } else if(product2 == null) {
+        } else if(product2 == null || product2.toString().equals("")) {
             return product1;
         }
         BoolTerm boolTerm = new BoolTerm();
@@ -49,11 +49,11 @@ public class Bool {
     }
 
     private static BoolEquation multiply(BoolEquation product1, BoolVar product2) {
-        if(product1 == null && product2 == null) {
+        if((product1 == null || product1.toString().equals("")) && (product2 == null || product2.toString().equals(""))) {
             return null;
-        } else if(product1 == null) {
+        } else if(product1 == null || product1.toString().equals("")) {
             return new BoolEquation(new BoolTerm(product2));
-        } else if(product2 == null) {
+        } else if(product2 == null || product2.toString().equals("")) {
             return product1;
         }
         BoolEquation boolEquation = new BoolEquation();
@@ -73,11 +73,11 @@ public class Bool {
     }
 
     private static BoolTerm multiply(BoolTerm product1, BoolTerm product2) {
-        if(product1 == null && product2 == null) {
+        if((product1 == null || product1.toString().equals("")) && (product2 == null || product2.toString().equals(""))) {
             return null;
-        } else if(product1 == null) {
+        } else if(product1 == null || product1.toString().equals("")) {
             return product2;
-        } else if(product2 == null) {
+        } else if(product2 == null || product2.toString().equals("")) {
             return product1;
         }
         BoolTerm boolTerm = new BoolTerm();
@@ -99,11 +99,11 @@ public class Bool {
     }
 
     private static BoolEquation multiply(BoolEquation product1, BoolTerm product2) {
-        if(product1 == null && product2 == null) {
+        if((product1 == null || product1.toString().equals("")) && (product2 == null || product2.toString().equals(""))) {
             return null;
-        } else if(product1 == null) {
+        } else if(product1 == null || product1.toString().equals("")) {
             return new BoolEquation(product2);
-        } else if(product2 == null) {
+        } else if(product2 == null || product2.toString().equals("")) {
             return product1;
         }
         BoolEquation boolEquation = new BoolEquation();
@@ -123,11 +123,11 @@ public class Bool {
     }
 
     private static BoolEquation multiply(BoolEquation product1, BoolEquation product2) {
-        if(product1 == null && product2 == null) {
+        if((product1 == null || product1.toString().equals("")) && (product2 == null || product2.toString().equals(""))) {
             return null;
-        } else if(product1 == null) {
+        } else if(product1 == null || product1.toString().equals("")) {
             return product2;
-        } else if(product2 == null) {
+        } else if(product2 == null || product2.toString().equals("")) {
             return product1;
         }
         BoolEquation boolEquation = new BoolEquation();
@@ -150,11 +150,11 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolVar addend1, BoolVar addend2) {
-        if(addend1 == null && addend2 == null) {
+        if((addend1 == null || addend1.toString().equals("")) && (addend2 == null || addend2.toString().equals(""))) {
             return null;
-        } else if(addend1 == null) {
+        } else if(addend1 == null || addend1.toString().equals("")) {
             return new BoolEquation(new BoolTerm(addend2));
-        } else if(addend2 == null) {
+        } else if(addend2 == null || addend2.toString().equals("")) {
             return new BoolEquation(new BoolTerm(addend1));
         }
         BoolEquation boolEquation = new BoolEquation();
@@ -172,11 +172,11 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolTerm addend1, BoolVar addend2) {
-        if(addend1 == null && addend2 == null) {
+        if((addend1 == null || addend1.toString().equals("")) && (addend2 == null || addend2.toString().equals(""))) {
             return null;
-        } else if(addend1 == null) {
+        } else if(addend1 == null || addend1.toString().equals("")) {
             return new BoolEquation(new BoolTerm(addend2));
-        } else if(addend2 == null) {
+        } else if(addend2 == null || addend2.toString().equals("")) {
             return new BoolEquation(addend1);
         }
         BoolEquation boolEquation = new BoolEquation();
@@ -196,11 +196,11 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolEquation addend1, BoolVar addend2) {
-        if(addend1 == null && addend2 == null) {
+        if((addend1 == null || addend1.toString().equals("")) && (addend2 == null || addend2.toString().equals(""))) {
             return null;
-        } else if(addend1 == null) {
+        } else if(addend1 == null || addend1.toString().equals("")) {
             return new BoolEquation(new BoolTerm(addend2));
-        } else if(addend2 == null) {
+        } else if(addend2 == null || addend2.toString().equals("")) {
             return addend1;
         }
         BoolEquation boolEquation = new BoolEquation();
@@ -218,11 +218,11 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolTerm addend1, BoolTerm addend2) {
-        if(addend1 == null && addend2 == null) {
+        if((addend1 == null || addend1.toString().equals("")) && (addend2 == null || addend2.toString().equals(""))) {
             return null;
-        } else if(addend1 == null) {
+        } else if(addend1 == null || addend1.toString().equals("")) {
             return new BoolEquation(addend2);
-        } else if(addend2 == null) {
+        } else if(addend2 == null || addend2.toString().equals("")) {
             return new BoolEquation(addend1);
         }
         BoolEquation boolEquation = new BoolEquation();
@@ -246,11 +246,11 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolEquation addend1, BoolTerm addend2) {
-        if(addend1 == null && addend2 == null) {
+        if((addend1 == null || addend1.toString().equals("")) && (addend2 == null || addend2.toString().equals(""))) {
             return null;
-        } else if(addend1 == null) {
+        } else if(addend1 == null || addend1.toString().equals("")) {
             return new BoolEquation(addend2);
-        } else if(addend2 == null) {
+        } else if(addend2 == null || addend2.toString().equals("")) {
             return addend1;
         }
         BoolEquation boolEquation = new BoolEquation();
@@ -273,11 +273,11 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolEquation addend1, BoolEquation addend2) {
-        if(addend1 == null && addend2 == null) {
+        if((addend1 == null || addend1.toString().equals("")) && (addend2 == null || addend2.toString().equals(""))) {
             return null;
-        } else if(addend1 == null) {
+        } else if(addend1 == null || addend1.toString().equals("")) {
             return addend2;
-        } else if(addend2 == null) {
+        } else if(addend2 == null || addend2.toString().equals("")) {
             return addend1;
         }
         BoolEquation boolEquation = new BoolEquation();
@@ -302,10 +302,16 @@ public class Bool {
     }
 
     private static BoolVar invert(BoolVar boolVar) {
+        if(boolVar == null || boolVar.toString().equals("")) {
+            return null;
+        }
         return new BoolVar(boolVar.getName(), !boolVar.getInverse());
     }
 
     private static BoolEquation invert(BoolTerm boolTerm) {
+        if(boolTerm == null || boolTerm.toString().equals("")) {
+            return null;
+        }
         BoolEquation boolEquation = new BoolEquation();
 
         for(int i = 0; i < boolTerm.getProducts().size(); i++) {
@@ -316,6 +322,9 @@ public class Bool {
     }
 
     private static BoolEquation invert(BoolEquation boolEquation) {
+        if(boolEquation == null || boolEquation.toString().equals("")) {
+            return null;
+        }
         BoolEquation outputEquation = new BoolEquation();
 
         for(int i = 0; i < boolEquation.getTerms().size(); i++) {
@@ -403,7 +412,7 @@ public class Bool {
                                 open--;
                             }
                         }
-                        if(inputString.length() >= i+1 && inputString.charAt(i+1) == '\'') {
+                        if(inputString.length() >= i+1 && inputString.charAt(i) == '\'') {
                             tempEquation = multiply(tempEquation, invert(stringToSOP(inputString.substring(1, i-1))));
                             if(inputString.length() == i+1) {
                                 inputString = "";

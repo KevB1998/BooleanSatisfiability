@@ -1,12 +1,15 @@
-import java.util.AbstractQueue;
 import java.util.ArrayList;
-import java.util.Queue;
-import java.util.Stack;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 @SuppressWarnings("Duplicates")
 public class Bool {
     private static BoolTerm multiply(BoolVar product1, BoolVar product2){
+        if(product1 == null && product2 == null) {
+            return null;
+        } else if(product1 == null) {
+            return new BoolTerm(product2);
+        } else if(product2 == null) {
+            return new BoolTerm(product1);
+        }
         BoolTerm boolTerm = new BoolTerm();
         boolTerm.addProduct(product1);
         if(boolTerm.addProduct(product2)) {
@@ -22,6 +25,13 @@ public class Bool {
     }
 
     private static BoolTerm multiply(BoolTerm product1, BoolVar product2) {
+        if(product1 == null && product2 == null) {
+            return null;
+        } else if(product1 == null) {
+            return new BoolTerm(product2);
+        } else if(product2 == null) {
+            return product1;
+        }
         BoolTerm boolTerm = new BoolTerm();
         for(int i = 0; i < product1.getProducts().size(); i++) {
             boolTerm.addProduct(product1.getProducts().get(i));
@@ -39,6 +49,13 @@ public class Bool {
     }
 
     private static BoolEquation multiply(BoolEquation product1, BoolVar product2) {
+        if(product1 == null && product2 == null) {
+            return null;
+        } else if(product1 == null) {
+            return new BoolEquation(new BoolTerm(product2));
+        } else if(product2 == null) {
+            return product1;
+        }
         BoolEquation boolEquation = new BoolEquation();
         ArrayList<BoolTerm> terms = product1.getTerms();
         for(int i = 0; i < terms.size(); i++) {
@@ -56,6 +73,13 @@ public class Bool {
     }
 
     private static BoolTerm multiply(BoolTerm product1, BoolTerm product2) {
+        if(product1 == null && product2 == null) {
+            return null;
+        } else if(product1 == null) {
+            return product2;
+        } else if(product2 == null) {
+            return product1;
+        }
         BoolTerm boolTerm = new BoolTerm();
         for(int i = 0; i < product2.getProducts().size(); i++) {
             boolTerm.addProduct(product2.getProducts().get(i));
@@ -75,6 +99,13 @@ public class Bool {
     }
 
     private static BoolEquation multiply(BoolEquation product1, BoolTerm product2) {
+        if(product1 == null && product2 == null) {
+            return null;
+        } else if(product1 == null) {
+            return new BoolEquation(product2);
+        } else if(product2 == null) {
+            return product1;
+        }
         BoolEquation boolEquation = new BoolEquation();
         ArrayList<BoolTerm> terms = product1.getTerms();
         for(int i = 0; i < terms.size(); i++) {
@@ -92,6 +123,13 @@ public class Bool {
     }
 
     private static BoolEquation multiply(BoolEquation product1, BoolEquation product2) {
+        if(product1 == null && product2 == null) {
+            return null;
+        } else if(product1 == null) {
+            return product2;
+        } else if(product2 == null) {
+            return product1;
+        }
         BoolEquation boolEquation = new BoolEquation();
         ArrayList<BoolTerm> terms = product1.getTerms();
         for(int i = 0; i < terms.size(); i++) {
@@ -112,6 +150,13 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolVar addend1, BoolVar addend2) {
+        if(addend1 == null && addend2 == null) {
+            return null;
+        } else if(addend1 == null) {
+            return new BoolEquation(new BoolTerm(addend2));
+        } else if(addend2 == null) {
+            return new BoolEquation(new BoolTerm(addend1));
+        }
         BoolEquation boolEquation = new BoolEquation();
 
         BoolTerm term1 = new BoolTerm(addend1);
@@ -127,6 +172,13 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolTerm addend1, BoolVar addend2) {
+        if(addend1 == null && addend2 == null) {
+            return null;
+        } else if(addend1 == null) {
+            return new BoolEquation(new BoolTerm(addend2));
+        } else if(addend2 == null) {
+            return new BoolEquation(addend1);
+        }
         BoolEquation boolEquation = new BoolEquation();
 
         if(null != addend1) {
@@ -144,6 +196,13 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolEquation addend1, BoolVar addend2) {
+        if(addend1 == null && addend2 == null) {
+            return null;
+        } else if(addend1 == null) {
+            return new BoolEquation(new BoolTerm(addend2));
+        } else if(addend2 == null) {
+            return addend1;
+        }
         BoolEquation boolEquation = new BoolEquation();
 
         if(null != addend1) {
@@ -159,6 +218,13 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolTerm addend1, BoolTerm addend2) {
+        if(addend1 == null && addend2 == null) {
+            return null;
+        } else if(addend1 == null) {
+            return new BoolEquation(addend2);
+        } else if(addend2 == null) {
+            return new BoolEquation(addend1);
+        }
         BoolEquation boolEquation = new BoolEquation();
 
         if(null != addend1) {
@@ -180,6 +246,13 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolEquation addend1, BoolTerm addend2) {
+        if(addend1 == null && addend2 == null) {
+            return null;
+        } else if(addend1 == null) {
+            return new BoolEquation(addend2);
+        } else if(addend2 == null) {
+            return addend1;
+        }
         BoolEquation boolEquation = new BoolEquation();
 
         if(null != addend1) {
@@ -200,6 +273,13 @@ public class Bool {
     }
 
     private static BoolEquation add(BoolEquation addend1, BoolEquation addend2) {
+        if(addend1 == null && addend2 == null) {
+            return null;
+        } else if(addend1 == null) {
+            return addend2;
+        } else if(addend2 == null) {
+            return addend1;
+        }
         BoolEquation boolEquation = new BoolEquation();
 
         if(null != addend1) {
@@ -301,93 +381,49 @@ public class Bool {
     public static BoolEquation stringToSOP(String inputString) {
         if(! inputString.contains("(")) {
             return stringToEquation(inputString);
+        } else if(!inputString.contains("+")) {
+            return stringToEquation(inputString.replace("(", "").replace(")",""));
         }
-        BoolEquation boolEquation = new BoolEquation();
+        BoolEquation boolEquation = null;
 
-        while(inputString.length() > 0) {
-            if ((inputString.contains("(") && inputString.contains("+")) && (inputString.indexOf('+') < inputString.indexOf('('))) {
-                boolEquation = add(boolEquation, stringToTerm(inputString.substring(0, inputString.indexOf('+'))));
-                inputString = inputString.substring(inputString.indexOf('+') + 1);
-            } else if ((inputString.contains("(") && inputString.contains("+")) && (inputString.indexOf('+') > inputString.indexOf('('))) {
-                int opens = 1;
-                int i;
-                for(i = 1; opens > 0; i++) {
-                    if(inputString.charAt(i) == '(') {
-                        opens++;
-                    } else if(inputString.charAt(i) == ')') {
-                        opens--;
-                    }
-                }
-                String tempString = inputString.substring(0, i+1);
-                BoolEquation tempEquation = new BoolEquation();
-                while(tempString.length() > 0) {
-                    if((tempString.contains("(") && tempString.contains("+")) && (tempString.indexOf('*') < tempString.indexOf('('))) {
-                        tempEquation = multiply(tempEquation, stringToVar(tempString.substring(0, tempString.indexOf('*'))));
-                        tempString = tempString.substring(tempString.indexOf('*') + 1);
-                    } else if((tempString.contains("(") && tempString.contains("+")) && (tempString.indexOf('*') < tempString.indexOf('('))) {
-                        opens = 1;
-                        for(i = 0; opens > 0; i++) {
-                            if(tempString.charAt(i) == '(') {
-                                opens++;
-                            } else if(tempString.charAt(i) == ')') {
-                                opens--;
+        while(inputString.contains("(") && inputString.contains("+")) {
+            if(inputString.indexOf("+") < inputString.indexOf("+")) {
+                boolEquation = add(boolEquation, stringToTerm(inputString.substring(0, inputString.indexOf("+"))));
+                inputString = inputString.substring(inputString.indexOf("+") + 1);
+            } else {
+                BoolEquation tempEquation = null;
+                while(inputString.indexOf("(") < inputString.indexOf("+")) {
+                    if(inputString.startsWith("(")) {
+                        int open = 1;
+                        int i;
+                        for(i = 1; open > 0; i++) {
+                            if(inputString.charAt(i) == '(') {
+                                open++;
+                            } else if(inputString.charAt(i) == ')') {
+                                open--;
                             }
                         }
-                        if(tempString.length() == i+1 || tempString.charAt(i+1) != '\'') {
-                            tempEquation = multiply(tempEquation, stringToSOP(tempString.substring(1,i)));
-                            tempString = tempString.substring(i+1);
+                        if(inputString.length() >= i+1 && inputString.charAt(i+1) == '\'') {
+                            tempEquation = multiply(tempEquation, invert(stringToSOP(inputString.substring(1, i-1))));
+                            if(inputString.length() == i+1) {
+                                inputString = "";
+                            } else {
+                                inputString = inputString.substring(i + 2);
+                            }
                         } else {
-                            tempEquation = multiply(tempEquation, invert(stringToSOP(tempString.substring(1, i))));
-                            tempString = tempString.substring(i+2);
-                        }
-                    } else if(tempString.contains("*")) {
-                        tempEquation = multiply(tempEquation, stringToTerm(tempString));
-                        break;
-                    } else if(tempString.contains("(")) {
-                        opens = 1;
-                        for(i = 1; opens > 0; i++) {
-                            if(tempString.charAt(i) == '(') {
-                                opens++;
-                            } else if(tempString.charAt(i) == ')') {
-                                opens--;
+                            tempEquation = multiply(tempEquation, stringToSOP(inputString.substring(1, i-1)));
+                            if(inputString.length() == i) {
+                                inputString = "";
+                            } else {
+                                inputString = inputString.substring(i + 1);
                             }
                         }
-                        if(tempString.length() == i+1 || tempString.charAt(i+1) != '\'') {
-                            tempEquation = multiply(tempEquation, stringToSOP(tempString.substring(1,i)));
-                        } else {
-                            tempEquation = multiply(tempEquation, invert(stringToSOP(tempString.substring(1, i))));
-                        }
-                        break;
                     } else {
-                        tempEquation = multiply(tempEquation, stringToVar(tempString));
-                        break;
+                        tempEquation = multiply(tempEquation, stringToVar(inputString.substring(0, inputString.indexOf("*"))));
+                        inputString = inputString.substring((inputString.indexOf("*") + 1));
                     }
                 }
                 boolEquation = add(boolEquation, tempEquation);
-                inputString = inputString.substring(inputString.indexOf('+') + 1);
-            } else if (inputString.contains("+")) {
-                boolEquation = add(boolEquation, stringToEquation(inputString));
-                break;
-            } else if (inputString.contains("(")) {
-                int opens = 1;
-                int i;
-                for(i = 0; opens > 0; i++) {
-                    if(inputString.charAt(i) == '(') {
-                        opens++;
-                    } else if(inputString.charAt(i) == ')') {
-                        opens--;
-                    }
-                }
-                if(inputString.length() == i+1 || inputString.charAt(i+1) != '\'') {
-                    boolEquation = add(boolEquation, stringToSOP(inputString.substring(1,i)));
-                    break;
-                } else {
-                    boolEquation = add(boolEquation, invert(stringToSOP(inputString.substring(1, i))));
-                    break;
-                }
-            } else {
-                boolEquation = add(boolEquation, stringToTerm(inputString));
-                break;
             }
         }
 

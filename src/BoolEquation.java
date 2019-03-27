@@ -63,4 +63,10 @@ public class BoolEquation {
         }
         return true;
     }
+
+    public BoolEquation split() {
+        BoolTerm tempTerm = terms.get(terms.size()-1);
+        terms.remove(terms.size() - 1);
+        return new BoolEquation(tempTerm);
+    }
 }

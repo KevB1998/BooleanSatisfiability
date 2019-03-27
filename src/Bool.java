@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 @SuppressWarnings("Duplicates")
 public class Bool {
@@ -339,6 +342,10 @@ public class Bool {
     }
 
     private static BoolVar stringToVar(String varString) {
+        if(varString.equals("")) {
+            return null;
+        }
+
         BoolVar boolVar;
         if(varString.endsWith("'")) {
             boolVar = new BoolVar(varString.substring(0, varString.length() - 1), true);
@@ -388,52 +395,62 @@ public class Bool {
     }
 
     public static BoolEquation stringToSOP(String inputString) {
-        if(! inputString.contains("(")) {
-            return stringToEquation(inputString);
-        } else if(!inputString.contains("+")) {
-            return stringToEquation(inputString.replace("(", "").replace(")",""));
-        }
         BoolEquation boolEquation = null;
 
-        while(inputString.contains("(") && inputString.contains("+")) {
-            if(inputString.indexOf("+") < inputString.indexOf("+")) {
-                boolEquation = add(boolEquation, stringToTerm(inputString.substring(0, inputString.indexOf("+"))));
-                inputString = inputString.substring(inputString.indexOf("+") + 1);
-            } else {
-                BoolEquation tempEquation = null;
-                while(inputString.indexOf("(") < inputString.indexOf("+")) {
-                    if(inputString.startsWith("(")) {
-                        int open = 1;
-                        int i;
-                        for(i = 1; open > 0; i++) {
-                            if(inputString.charAt(i) == '(') {
-                                open++;
-                            } else if(inputString.charAt(i) == ')') {
-                                open--;
-                            }
-                        }
-                        if(inputString.length() >= i+1 && inputString.charAt(i) == '\'') {
-                            tempEquation = multiply(tempEquation, invert(stringToSOP(inputString.substring(1, i-1))));
-                            if(inputString.length() == i+1) {
-                                inputString = "";
-                            } else {
-                                inputString = inputString.substring(i + 2);
-                            }
-                        } else {
-                            tempEquation = multiply(tempEquation, stringToSOP(inputString.substring(1, i-1)));
-                            if(inputString.length() == i) {
-                                inputString = "";
-                            } else {
-                                inputString = inputString.substring(i + 1);
-                            }
-                        }
-                    } else {
-                        tempEquation = multiply(tempEquation, stringToVar(inputString.substring(0, inputString.indexOf("*"))));
-                        inputString = inputString.substring((inputString.indexOf("*") + 1));
-                    }
+        Stack<BoolEquationOperator> equationStack= new Stack<>();
+
+        BoolEquation tempEquation = null;
+        String tempVarString = "";
+        for(int i = 0; i < inputString.length(); i++) {
+            if(inputString.charAt(i) == '*') {
+                tempEquation = multiply(tempEquation, stringToVar(tempVarString));
+                tempVarString = "";
+            } else if(inputString.charAt(i) == '+' && equationStack.size() == 0){
+                equationStack.push(new BoolEquationOperator("multiply", multiply(tempEquation, stringToVar(tempVarString))));
+                tempEquation = null;
+                tempVarString = "";
+            } else if(inputString.charAt(i) == '+' && equationStack.peek().operation.equals("add")) {
+                equationStack.peek().boolEquation = add(multiply(tempEquation, stringToVar(tempVarString)), equationStack.peek().boolEquation);
+                tempEquation = null;
+                tempVarString = "";
+            } else if(inputString.charAt(i) == '+' && equationStack.peek().operation.equals("multiply")) {
+                equationStack.push(new BoolEquationOperator("add", multiply(tempEquation, stringToVar(tempVarString))));
+                tempEquation = null;
+                tempVarString = "";
+            } else if(inputString.charAt(i) == '(' && i == 0) {
+                equationStack.push(new BoolEquationOperator("add", null));
+                equationStack.push(new BoolEquationOperator("multiply", null, true));
+            } else if(inputString.charAt(i) == '(' && inputString.charAt(i-1) == '+') {
+                equationStack.push(new BoolEquationOperator("add", tempEquation, true));
+                tempEquation = null;
+            } else if(inputString.charAt(i) == '(' && inputString.charAt(i-1) == '*') {
+                equationStack.push(new BoolEquationOperator("multiply", tempEquation, true));
+                tempEquation = null;
+            } else if(inputString.charAt(i) == ')' && equationStack.peek().operation.equals("add")) {
+                tempEquation = multiply(tempEquation, stringToVar(tempVarString));
+                tempEquation = add(equationStack.peek().boolEquation, tempEquation);
+                if(!equationStack.pop().opens) {
+                    tempEquation = multiply(equationStack.pop().boolEquation, tempEquation);
                 }
-                boolEquation = add(boolEquation, tempEquation);
+                tempVarString = "";
+            } else if(inputString.charAt(i) == ')' && equationStack.peek().operation.equals("multiply")) {
+                tempEquation = multiply(equationStack.pop().boolEquation, multiply(tempEquation, stringToVar(tempVarString)));
+                tempVarString = "";
+            } else {
+                tempVarString += inputString.charAt(i);
             }
+        }
+        tempEquation = multiply(tempEquation, stringToVar(tempVarString));
+        if (equationStack.peek().operation.equals("add")) {
+            equationStack.peek().boolEquation = add(equationStack.peek().boolEquation, tempEquation);
+        } else {
+            equationStack.peek().boolEquation = multiply(equationStack.peek().boolEquation, tempEquation);
+        }
+
+        if(equationStack.size() == 1) {
+            boolEquation = equationStack.pop().boolEquation;
+        } else {
+            throw new RuntimeException("Invalid Input");
         }
 
         return boolEquation;

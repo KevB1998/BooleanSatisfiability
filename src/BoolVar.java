@@ -2,30 +2,25 @@ public class BoolVar {
     private String name;
     private boolean inverse;
 
-    public BoolVar(String name) {
+    public BoolVar(String name) { //O(1)
         this.name = name;
         this.inverse = false;
     }
 
-    public BoolVar(String name, boolean inverse) {
+    public BoolVar(String name, boolean inverse) { //O(1)
         this.name = name;
         this.inverse = inverse;
     }
 
-    public void is(BoolVar boolVar) {
-        this.name = boolVar.getName();
-        this.inverse = boolVar.getInverse();
-    }
-
     public String getName() {
         return this.name;
-    }
+    } //O(1)
 
     public boolean getInverse() {
         return this.inverse;
-    }
+    } //O(1)
 
-    public String toString() {
+    public String toString() { //O(1)
         String output = name;
         if(inverse) {
             output += "\'";
@@ -33,17 +28,13 @@ public class BoolVar {
         return output;
     }
 
-    public boolean equals(BoolVar var) {
+    public boolean equals(BoolVar var) { //O(1)
         boolean equal = (this.name.equals(var.getName())) && (this.inverse == var.getInverse());
         return equal;
     }
 
-    public boolean isInverse(BoolVar var) {
+    public boolean isInverse(BoolVar var) { //O(1)
         boolean inv = (this.name.equals(var.getName())) && (this.inverse != var.getInverse());
         return inv;
-    }
-
-    public String details() {
-        return "NAME: " + this.name + "\tINVERSE: " + this.inverse;
     }
 }

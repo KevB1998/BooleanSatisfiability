@@ -3,25 +3,21 @@ import java.util.ArrayList;
 public class BoolTerm {
     public ArrayList<BoolVar> products;
 
-    public BoolTerm() {
+    public BoolTerm() { //O(1)
         this.products = new ArrayList<>();
     }
 
-    public BoolTerm(BoolVar var) {
+    public BoolTerm(BoolVar var) { //O(1)
         this.products = new ArrayList<>();
         products.add(var);
 
     }
 
-    public void is(BoolTerm boolTerm) {
-        this.products = boolTerm.getProducts();
-    }
-
     public ArrayList<BoolVar> getProducts() {
         return this.products;
-    }
+    } //O(1)
 
-    public boolean addProduct(BoolVar product) {
+    public boolean addProduct(BoolVar product) { //O(n)
         boolean found = false;
         for(int i = 0; i < this.products.size(); i++) {
             if(this.products.get(i).equals(product)) {
@@ -37,7 +33,7 @@ public class BoolTerm {
         return true;
     }
 
-    public String toString() {
+    public String toString() { //O(n)
         String output = "";
         if(this == null) {
             return output;
@@ -53,7 +49,7 @@ public class BoolTerm {
         return output;
     }
 
-    public boolean equals(BoolTerm term) {
+    public boolean equals(BoolTerm term) { //O(n^2)
         for(int i = 0; i < this.products.size(); i++) {
             boolean found = false;
             for(int j = 0; j < term.getProducts().size(); j++) {
@@ -66,7 +62,7 @@ public class BoolTerm {
         return true;
     }
 
-    public boolean contains(BoolVar boolVar) {
+    public boolean contains(BoolVar boolVar) { //O(n)
         for(int i = 0; i < this.products.size(); i++) {
             if(this.products.get(i).equals(boolVar)) {
                 return true;
@@ -75,7 +71,7 @@ public class BoolTerm {
         return false;
     }
 
-    public boolean contains(BoolTerm boolTerm) {
+    public boolean contains(BoolTerm boolTerm) { //O(n^2)
         for(int i = 0; i < boolTerm.getProducts().size(); i++) {
             if(! contains(boolTerm.getProducts().get(i))) {
                 return false;

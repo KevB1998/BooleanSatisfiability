@@ -5,27 +5,23 @@ public class BoolEquation {
 
     public BoolEquation() {
         this.terms = new ArrayList<>();
-    }
+    } //O(1)
 
-    public BoolEquation(BoolTerm term) {
+    public BoolEquation(BoolTerm term) { //O(1)
         this.terms = new ArrayList<>();
         this.terms.add(term);
     }
 
-    public BoolEquation(BoolVar var) {
+    public BoolEquation(BoolVar var) { //O(1)
         this.terms = new ArrayList<>();
         this.terms.add(new BoolTerm(var));
     }
 
-    public void is(BoolEquation boolEquation) {
-        this.terms = boolEquation.getTerms();
-    }
-
     public ArrayList<BoolTerm> getTerms() {
         return this.terms;
-    }
+    } //O(1)
 
-    public void addTerm(BoolTerm boolTerm) {
+    public void addTerm(BoolTerm boolTerm) { //O(n^3)
         for(int i = 0; i < this.terms.size(); i++) {
             if(this.terms.get(i).contains(boolTerm)) {
                 this.terms.remove(i);
@@ -38,7 +34,7 @@ public class BoolEquation {
         this.terms.add(boolTerm);
     }
 
-    public String toString() {
+    public String toString() { //O(n^2)
         String output = "";
         for(int i = 0; i < this.terms.size(); i++) {
             if(i == this.terms.size()-1) {
@@ -51,7 +47,7 @@ public class BoolEquation {
         return output;
     }
 
-    public boolean equals(BoolEquation equation) {
+    public boolean equals(BoolEquation equation) { //O(n^4)
         for(int i = 0; i < this.terms.size(); i++) {
             boolean found = false;
             for(int j = 0; j < equation.getTerms().size(); j++) {
@@ -62,11 +58,5 @@ public class BoolEquation {
             if(!found) return false;
         }
         return true;
-    }
-
-    public BoolEquation split() {
-        BoolTerm tempTerm = terms.get(terms.size()-1);
-        terms.remove(terms.size() - 1);
-        return new BoolEquation(tempTerm);
     }
 }

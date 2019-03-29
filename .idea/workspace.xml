@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61dbec05-bac1-4e9d-a8b4-a84891e3c619" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/Bool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/Bool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/BoolEquation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/BoolEquation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/BoolTerm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/BoolTerm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/BoolVar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/BoolVar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Boolean-Satisfiability/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoolEquation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoolEquation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoolEquationOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoolEquationOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoolTerm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoolTerm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoolVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoolVar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -14,15 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BoolVar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-              <folding>
-                <element signature="e#1059#1060#0" expanded="true" />
-                <element signature="e#1124#1125#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="510">
+              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -30,13 +36,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BoolTerm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="83" column="20" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+            <state relative-caret-position="393">
+              <caret line="73" column="57" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
               <folding>
                 <element signature="e#116#117#0" expanded="true" />
                 <element signature="e#165#166#0" expanded="true" />
-                <element signature="e#323#324#0" expanded="true" />
-                <element signature="e#367#368#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -45,28 +49,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BoolEquation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
-              <folding>
-                <element signature="e#465#466#0" expanded="true" />
-                <element signature="e#505#506#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="675">
+              <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Bool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="454" column="13" selection-start-line="454" selection-start-column="13" selection-end-line="454" selection-end-column="13" />
+            <state relative-caret-position="473">
+              <caret line="461" column="15" selection-start-line="461" selection-start-column="15" selection-end-line="461" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#752#753#0" expanded="true" />
                 <element signature="e#803#804#0" expanded="true" />
+                <element signature="e#6018#6019#0" expanded="true" />
                 <element signature="e#6062#6063#0" expanded="true" />
+                <element signature="e#6882#6883#0" expanded="true" />
                 <element signature="e#6926#6927#0" expanded="true" />
+                <element signature="e#8642#8643#0" expanded="true" />
                 <element signature="e#8686#8687#0" expanded="true" />
-                <element signature="e#18444#18445#0" expanded="true" />
+                <element signature="e#19146#19147#0" expanded="true" />
+                <element signature="e#19212#19213#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BoolEquationOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="57" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+            <state relative-caret-position="225">
+              <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -85,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
+              <caret line="5" column="72" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -117,17 +122,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/Group.java" />
         <option value="$PROJECT_DIR$/src/BoolVar.java" />
         <option value="$PROJECT_DIR$/src/BoolTerm.java" />
-        <option value="$PROJECT_DIR$/src/Group.java" />
         <option value="$PROJECT_DIR$/src/BoolEquation.java" />
         <option value="$PROJECT_DIR$/src/BoolEquationOperator.java" />
-        <option value="$PROJECT_DIR$/src/Bool.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Bool.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1" />
     <option name="y" value="23" />
     <option name="width" value="1680" />
@@ -138,26 +143,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Boolean-Satisfiability" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Boolean-Satisfiability" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Boolean-Satisfiability" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Boolean-Satisfiability" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -207,14 +193,15 @@
       <updated>1552363068050</updated>
       <workItem from="1552363069266" duration="23523000" />
       <workItem from="1552791596899" duration="54996000" />
+      <workItem from="1553824835483" duration="2891000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78519000" />
+    <option name="totallyTimeSpent" value="81410000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="23" width="1680" height="955" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="955" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25274727" />
@@ -283,73 +270,62 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Group.java">
+    <entry file="file://$PROJECT_DIR$/src/Group.java" />
+    <entry file="file://$PROJECT_DIR$/src/BoolVar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        <state relative-caret-position="510">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BoolTerm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="83" column="20" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+        <state relative-caret-position="393">
+          <caret line="73" column="57" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
           <folding>
             <element signature="e#116#117#0" expanded="true" />
             <element signature="e#165#166#0" expanded="true" />
-            <element signature="e#323#324#0" expanded="true" />
-            <element signature="e#367#368#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoolEquation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
-          <folding>
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BoolEquationOperator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="57" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+        <state relative-caret-position="225">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bool.java">
+    <entry file="file://$PROJECT_DIR$/src/BoolEquation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="454" column="13" selection-start-line="454" selection-start-column="13" selection-end-line="454" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#6062#6063#0" expanded="true" />
-            <element signature="e#6926#6927#0" expanded="true" />
-            <element signature="e#8686#8687#0" expanded="true" />
-            <element signature="e#18444#18445#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="675">
+          <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
+          <caret line="5" column="72" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoolVar.java">
+    <entry file="file://$PROJECT_DIR$/src/Bool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="473">
+          <caret line="461" column="15" selection-start-line="461" selection-start-column="15" selection-end-line="461" selection-end-column="15" />
           <folding>
-            <element signature="e#1059#1060#0" expanded="true" />
-            <element signature="e#1124#1125#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#6018#6019#0" expanded="true" />
+            <element signature="e#6062#6063#0" expanded="true" />
+            <element signature="e#6882#6883#0" expanded="true" />
+            <element signature="e#6926#6927#0" expanded="true" />
+            <element signature="e#8642#8643#0" expanded="true" />
+            <element signature="e#8686#8687#0" expanded="true" />
+            <element signature="e#19146#19147#0" expanded="true" />
+            <element signature="e#19212#19213#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -346,10 +346,6 @@ public class Bool {
     }
 
     private static BoolVar stringToVar(String varString) {
-        if(varString.equals("")) {
-            return null;
-        }
-
         BoolVar boolVar;
         if(varString.endsWith("'")) {
             boolVar = new BoolVar(varString.substring(0, varString.length() - 1), true);
@@ -430,6 +426,16 @@ public class Bool {
             } else if(inputString.charAt(i) == '(' && inputString.charAt(i-1) == '*') {
                 equationStack.push(new BoolEquationOperator("multiply", tempEquation, true));
                 tempEquation = new BoolEquation();
+            }  else if(inputString.charAt(i) == ')' && equationStack.peek().operation.equals("add") && inputString.length() > i+1 && inputString.charAt(i+1) == '\'') {
+                tempEquation = multiply(tempEquation, stringToVar(tempVarString));
+                tempEquation = add(equationStack.peek().boolEquation, tempEquation);
+                if(!equationStack.pop().opens) {
+                    tempEquation = invert(multiply(equationStack.pop().boolEquation, tempEquation));
+                } else {
+                    tempEquation = invert(tempEquation);
+                }
+                tempVarString = "";
+                i++;
             } else if(inputString.charAt(i) == ')' && equationStack.peek().operation.equals("add")) {
                 tempEquation = multiply(tempEquation, stringToVar(tempVarString));
                 tempEquation = add(equationStack.peek().boolEquation, tempEquation);
@@ -437,6 +443,10 @@ public class Bool {
                     tempEquation = multiply(equationStack.pop().boolEquation, tempEquation);
                 }
                 tempVarString = "";
+            } else if(inputString.charAt(i) == ')' && equationStack.peek().operation.equals("multiply") && inputString.length() > i+1  && inputString.charAt(i+1) == '\'') {
+                tempEquation = multiply(equationStack.pop().boolEquation, invert(multiply(tempEquation, stringToVar(tempVarString))));
+                tempVarString = "";
+                i++;
             } else if(inputString.charAt(i) == ')' && equationStack.peek().operation.equals("multiply")) {
                 tempEquation = multiply(equationStack.pop().boolEquation, multiply(tempEquation, stringToVar(tempVarString)));
                 tempVarString = "";
@@ -445,16 +455,21 @@ public class Bool {
             }
         }
         tempEquation = multiply(tempEquation, stringToVar(tempVarString));
-        if (equationStack.peek().operation.equals("add")) {
-            equationStack.peek().boolEquation = add(equationStack.peek().boolEquation, tempEquation);
-        } else {
-            equationStack.peek().boolEquation = multiply(equationStack.peek().boolEquation, tempEquation);
-        }
 
-        if(equationStack.size() == 1) {
-            boolEquation = equationStack.pop().boolEquation;
-        } else {
-            throw new RuntimeException("Invalid Input");
+        if(equationStack.size() == 0) { //didn't start with opening parentheses
+            boolEquation = tempEquation;
+        } else { //did start with opening parentheses
+            if (equationStack.peek().operation.equals("add")) {
+                equationStack.peek().boolEquation = add(equationStack.peek().boolEquation, tempEquation);
+            } else {
+                equationStack.peek().boolEquation = multiply(equationStack.peek().boolEquation, tempEquation);
+            }
+
+            if (equationStack.size() == 1) {
+                boolEquation = equationStack.pop().boolEquation;
+            } else {
+                throw new RuntimeException("Invalid Input");
+            }
         }
 
         return boolEquation;

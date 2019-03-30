@@ -408,7 +408,7 @@ public class Bool {
                 tempEquation = multiply(tempEquation, stringToVar(tempVarString));
                 tempVarString = "";
             } else if(inputString.charAt(i) == '+' && equationStack.size() == 0){
-                equationStack.push(new BoolEquationOperator("multiply", multiply(tempEquation, stringToVar(tempVarString))));
+                equationStack.push(new BoolEquationOperator("add", multiply(tempEquation, stringToVar(tempVarString))));
                 tempEquation = new BoolEquation();
                 tempVarString = "";
             } else if(inputString.charAt(i) == '+' && equationStack.peek().operation.equals("add")) {

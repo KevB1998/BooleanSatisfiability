@@ -397,89 +397,88 @@ public class Bool {
     }
 
     public static BoolEquation stringToSOP(String inputString) { //O(n^27)
-        BoolEquation boolEquation = new BoolEquation();
+        try {
+            BoolEquation boolEquation = new BoolEquation();
 
-        Stack<BoolEquationOperator> equationStack= new Stack<>();
+            Stack<BoolEquationOperator> equationStack = new Stack<>();
 
-        BoolEquation tempEquation = new BoolEquation();
-        String tempVarString = "";
-        for(int i = 0; i < inputString.length(); i++) {
-            if(inputString.charAt(i) == '*') {
-                tempEquation = multiply(tempEquation, stringToVar(tempVarString));
-                tempVarString = "";
-            } else if(inputString.charAt(i) == '+' && equationStack.size() == 0){
-                equationStack.push(new BoolEquationOperator("add", multiply(tempEquation, stringToVar(tempVarString))));
-                tempEquation = new BoolEquation();
-                tempVarString = "";
-            } else if(inputString.charAt(i) == '+' && equationStack.peek().operation.equals("add")) {
-                equationStack.peek().boolEquation = add(multiply(tempEquation, stringToVar(tempVarString)), equationStack.peek().boolEquation);
-                tempEquation = new BoolEquation();
-                tempVarString = "";
-            } else if(inputString.charAt(i) == '+' && equationStack.peek().operation.equals("multiply")) {
-                equationStack.push(new BoolEquationOperator("add", multiply(tempEquation, stringToVar(tempVarString))));
-                tempEquation = new BoolEquation();
-                tempVarString = "";
-            } else if(inputString.charAt(i) == '(' && (i == 0 || inputString.charAt(i-1) == '(')) {
-                equationStack.push(new BoolEquationOperator("add", new BoolEquation()));
-                equationStack.push(new BoolEquationOperator("multiply", new BoolEquation(), true));
-            } else if(inputString.charAt(i) == '(' && inputString.charAt(i-1) == '+') {
-                equationStack.push(new BoolEquationOperator("add", tempEquation, true));
-                tempEquation = new BoolEquation();
-            } else if(inputString.charAt(i) == '(' && inputString.charAt(i-1) == '*') {
-                equationStack.push(new BoolEquationOperator("multiply", tempEquation, true));
-                tempEquation = new BoolEquation();
-            } else if(inputString.charAt(i) == ')' && equationStack.peek().operation.equals("add") && inputString.length() > i+1 && inputString.charAt(i+1) == '\'') {
-                tempEquation = multiply(tempEquation, stringToVar(tempVarString));
-                tempEquation = add(equationStack.peek().boolEquation, tempEquation);
-                if(!equationStack.pop().opens) {
-                    tempEquation = multiply(equationStack.pop().boolEquation, invert(tempEquation));
+            BoolEquation tempEquation = new BoolEquation();
+            String tempVarString = "";
+            for (int i = 0; i < inputString.length(); i++) {
+                if (inputString.charAt(i) == '*') {
+                    tempEquation = multiply(tempEquation, stringToVar(tempVarString));
+                    tempVarString = "";
+                } else if (inputString.charAt(i) == '+' && equationStack.size() == 0) {
+                    equationStack.push(new BoolEquationOperator("add", multiply(tempEquation, stringToVar(tempVarString))));
+                    tempEquation = new BoolEquation();
+                    tempVarString = "";
+                } else if (inputString.charAt(i) == '+' && equationStack.peek().operation.equals("add")) {
+                    equationStack.peek().boolEquation = add(multiply(tempEquation, stringToVar(tempVarString)), equationStack.peek().boolEquation);
+                    tempEquation = new BoolEquation();
+                    tempVarString = "";
+                } else if (inputString.charAt(i) == '+' && equationStack.peek().operation.equals("multiply")) {
+                    equationStack.push(new BoolEquationOperator("add", multiply(tempEquation, stringToVar(tempVarString))));
+                    tempEquation = new BoolEquation();
+                    tempVarString = "";
+                } else if (inputString.charAt(i) == '(' && (i == 0 || inputString.charAt(i - 1) == '(')) {
+                    equationStack.push(new BoolEquationOperator("add", new BoolEquation()));
+                    equationStack.push(new BoolEquationOperator("multiply", new BoolEquation(), true));
+                } else if (inputString.charAt(i) == '(' && inputString.charAt(i - 1) == '+') {
+                    equationStack.push(new BoolEquationOperator("add", tempEquation, true));
+                    tempEquation = new BoolEquation();
+                } else if (inputString.charAt(i) == '(' && inputString.charAt(i - 1) == '*') {
+                    equationStack.push(new BoolEquationOperator("multiply", tempEquation, true));
+                    tempEquation = new BoolEquation();
+                } else if (inputString.charAt(i) == ')' && equationStack.peek().operation.equals("add") && inputString.length() > i + 1 && inputString.charAt(i + 1) == '\'') {
+                    tempEquation = multiply(tempEquation, stringToVar(tempVarString));
+                    tempEquation = add(equationStack.peek().boolEquation, tempEquation);
+                    if (!equationStack.pop().opens) {
+                        tempEquation = multiply(equationStack.pop().boolEquation, invert(tempEquation));
+                    } else {
+                        tempEquation = invert(tempEquation);
+                    }
+                    tempVarString = "";
+                    i++;
+                } else if (inputString.charAt(i) == ')' && equationStack.peek().operation.equals("add")) {
+                    tempEquation = multiply(tempEquation, stringToVar(tempVarString));
+                    tempEquation = add(equationStack.peek().boolEquation, tempEquation);
+                    if (!equationStack.pop().opens) {
+                        tempEquation = multiply(equationStack.pop().boolEquation, tempEquation);
+                    }
+                    tempVarString = "";
+                } else if (inputString.charAt(i) == ')' && equationStack.peek().operation.equals("multiply") && inputString.length() > i + 1 && inputString.charAt(i + 1) == '\'') {
+                    tempEquation = multiply(equationStack.pop().boolEquation, invert(multiply(tempEquation, stringToVar(tempVarString))));
+                    tempVarString = "";
+                    i++;
+                } else if (inputString.charAt(i) == ')' && equationStack.peek().operation.equals("multiply")) {
+                    tempEquation = multiply(equationStack.pop().boolEquation, multiply(tempEquation, stringToVar(tempVarString)));
+                    tempVarString = "";
                 } else {
-                    tempEquation = invert(tempEquation);
+                    tempVarString += inputString.charAt(i);
                 }
-                tempVarString = "";
-                i++;
-            } else if(inputString.charAt(i) == ')' && equationStack.peek().operation.equals("add")) {
-                tempEquation = multiply(tempEquation, stringToVar(tempVarString));
-                tempEquation = add(equationStack.peek().boolEquation, tempEquation);
-                if(!equationStack.pop().opens) {
-                    tempEquation = multiply(equationStack.pop().boolEquation, tempEquation);
+            }
+            tempEquation = multiply(tempEquation, stringToVar(tempVarString));
+
+            if (equationStack.size() == 0) { //didn't start with opening parentheses
+                boolEquation = tempEquation;
+            } else { //did start with opening parentheses
+                if (equationStack.peek().operation.equals("add")) {
+                    equationStack.peek().boolEquation = add(equationStack.peek().boolEquation, tempEquation);
+                } else {
+                    equationStack.peek().boolEquation = multiply(equationStack.peek().boolEquation, tempEquation);
                 }
-                tempVarString = "";
-            } else if(inputString.charAt(i) == ')' && equationStack.peek().operation.equals("multiply") && inputString.length() > i+1  && inputString.charAt(i+1) == '\'') {
-                tempEquation = multiply(equationStack.pop().boolEquation, invert(multiply(tempEquation, stringToVar(tempVarString))));
-                tempVarString = "";
-                i++;
-            } else if(inputString.charAt(i) == ')' && equationStack.peek().operation.equals("multiply")) {
-                tempEquation = multiply(equationStack.pop().boolEquation, multiply(tempEquation, stringToVar(tempVarString)));
-                tempVarString = "";
-            } else {
-                tempVarString += inputString.charAt(i);
+
+                if (equationStack.size() == 1) {
+                    boolEquation = equationStack.pop().boolEquation;
+                } else {
+                    throw new RuntimeException("Invalid Input");
+                }
             }
-            /*if(equationStack.size() == 0) {
-                System.out.println("Stack Peek: \ntempEquation: " + tempEquation + "\ntempVarString: " + tempVarString + "\n");
-            } else {
-                System.out.println("Stack Peek: " + equationStack.peek() + "\ntempEquation: " + tempEquation + "\ntempVarString: " + tempVarString + "\n");
-            }*/
+
+            return boolEquation;
+        } catch(Throwable err) {
+            throw new RuntimeException("Invalid Input");
         }
-        tempEquation = multiply(tempEquation, stringToVar(tempVarString));
-
-        if(equationStack.size() == 0) { //didn't start with opening parentheses
-            boolEquation = tempEquation;
-        } else { //did start with opening parentheses
-            if (equationStack.peek().operation.equals("add")) {
-                equationStack.peek().boolEquation = add(equationStack.peek().boolEquation, tempEquation);
-            } else {
-                equationStack.peek().boolEquation = multiply(equationStack.peek().boolEquation, tempEquation);
-            }
-
-            if (equationStack.size() == 1) {
-                boolEquation = equationStack.pop().boolEquation;
-            } else {
-                throw new RuntimeException("Invalid Input");
-            }
-        }
-
-        return boolEquation;
     }
 
     public static String satisfy(String inputString) { //O(n^29)

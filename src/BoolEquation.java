@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+//A class to represent an ORed group of BoolTerms
 public class BoolEquation {
     private ArrayList<BoolTerm> terms;
 

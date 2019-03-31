@@ -1,11 +1,17 @@
+import java.util.Scanner;
 
+//A class used for client interaction
 @SuppressWarnings("Duplicates")
 public class Main {
-
+    
     public static void main(String[] args) {
-        String equationString = "(a+b+c)*(a'+b'+c)*(a+b'+c')*(a'+b+c')"; //Insert input string here
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println(Bool.satisfy(equationString));
+        System.out.println("Please enter a valid boolean equation");
+        String equationString = scanner.nextLine(); //Insert input string here
+
+        System.out.println("\n" + Bool.satisfy(equationString));
+        scanner.close();
     }
 
 

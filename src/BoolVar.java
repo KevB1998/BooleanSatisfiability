@@ -1,3 +1,4 @@
+//A class to represent a boolean literal
 public class BoolVar {
     private String name;
     private boolean inverse;

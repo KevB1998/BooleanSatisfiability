@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+//A class to represent an ANDed group of BoolVars
 public class BoolTerm {
     public ArrayList<BoolVar> products;
 

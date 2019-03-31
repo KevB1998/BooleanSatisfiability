@@ -1,3 +1,4 @@
+//A class to represent a grouping data object
 public class BoolEquationOperator {
     public BoolEquation boolEquation;
     public String operation;

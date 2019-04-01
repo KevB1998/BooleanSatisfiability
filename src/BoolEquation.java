@@ -4,9 +4,9 @@ import java.util.ArrayList;
 public class BoolEquation {
     private ArrayList<BoolTerm> terms;
 
-    public BoolEquation() {
+    public BoolEquation() { //O(1)
         this.terms = new ArrayList<>();
-    } //O(1)
+    }
 
     public BoolEquation(BoolTerm term) { //O(1)
         this.terms = new ArrayList<>();
@@ -18,9 +18,9 @@ public class BoolEquation {
         this.terms.add(new BoolTerm(var));
     }
 
-    public ArrayList<BoolTerm> getTerms() {
+    public ArrayList<BoolTerm> getTerms() { //O(1)
         return this.terms;
-    } //O(1)
+    }
 
     public void addTerm(BoolTerm boolTerm) { //O(n^3)
         for(int i = 0; i < this.terms.size(); i++) {

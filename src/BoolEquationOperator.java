@@ -2,16 +2,16 @@
 public class BoolEquationOperator {
     public BoolEquation boolEquation;
     public String operation;
-    public boolean opens;
+    public boolean explicit;
     public BoolEquationOperator(String operation, BoolEquation boolEquation) { //O(1)
         this.boolEquation = boolEquation;
         this.operation = operation;
-        this.opens = false;
+        this.explicit = false;
     }
-    public BoolEquationOperator(String operation, BoolEquation boolEquation, boolean opens) { //O(1)
+    public BoolEquationOperator(String operation, BoolEquation boolEquation, boolean explicit) { //O(1)
         this.boolEquation = boolEquation;
         this.operation = operation;
-        this.opens = opens;
+        this.explicit = explicit;
     }
 
     public String toString() { //O(1)
@@ -21,6 +21,6 @@ public class BoolEquationOperator {
         } else {
             boolEquationString = boolEquation.toString();
         }
-        return boolEquationString + " \"" + operation + "\" " + opens;
+        return boolEquationString + " \"" + operation + "\" " + explicit;
     }
 }

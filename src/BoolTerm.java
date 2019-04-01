@@ -14,9 +14,9 @@ public class BoolTerm {
 
     }
 
-    public ArrayList<BoolVar> getProducts() {
+    public ArrayList<BoolVar> getProducts() {  //O(1)
         return this.products;
-    } //O(1)
+    }
 
     public boolean addProduct(BoolVar product) { //O(n)
         boolean found = false;

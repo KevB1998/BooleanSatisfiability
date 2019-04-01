@@ -3,7 +3,7 @@ import java.util.Scanner;
 //A class used for client interaction
 @SuppressWarnings("Duplicates")
 public class Main {
-    
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

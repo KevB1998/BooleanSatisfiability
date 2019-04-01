@@ -13,13 +13,13 @@ public class BoolVar {
         this.inverse = inverse;
     }
 
-    public String getName() {
+    public String getName() { //O(1)
         return this.name;
-    } //O(1)
+    }
 
-    public boolean getInverse() {
+    public boolean getInverse() { //O(1)
         return this.inverse;
-    } //O(1)
+    }
 
     public String toString() { //O(1)
         String output = name;

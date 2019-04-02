@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+//THESE TIME'S ARE WRONG... terms.size() is not necessarily < n
+
 //A class to represent an ORed group of BoolTerms
 public class BoolEquation {
     private ArrayList<BoolTerm> terms;

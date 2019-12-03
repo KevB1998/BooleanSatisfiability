@@ -433,7 +433,7 @@ public class Bool {
                 } else if (inputString.charAt(i) == ')' && equationStack.peek().operation.equals("OR") && inputString.length() > i + 1 && inputString.charAt(i + 1) == '\'') {
                     tempEquation = AND(tempEquation, stringToVar(tempVarString));
                     tempEquation = OR(equationStack.peek().boolEquation, tempEquation);
-                    if (!equationStack.pop().opens) {
+                    if (!equationStack.pop().explicit) {
                         tempEquation = AND(equationStack.pop().boolEquation, NOT(tempEquation));
                     } else {
                         tempEquation = NOT(tempEquation);
@@ -443,7 +443,7 @@ public class Bool {
                 } else if (inputString.charAt(i) == ')' && equationStack.peek().operation.equals("OR")) {
                     tempEquation = AND(tempEquation, stringToVar(tempVarString));
                     tempEquation = OR(equationStack.peek().boolEquation, tempEquation);
-                    if (!equationStack.pop().opens) {
+                    if (!equationStack.pop().explicit) {
                         tempEquation = AND(equationStack.pop().boolEquation, tempEquation);
                     }
                     tempVarString = "";
